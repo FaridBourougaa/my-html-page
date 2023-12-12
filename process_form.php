@@ -1,20 +1,15 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $firstname = $_POST["firstname"];
-    $lastname = $_POST["lastname"];
-    $children = $_POST["children"];
+    $to = "your@email.com";
+    $subject = "Subject of the Email";
+    $message = "This is the content of the email.";
 
-    $to = "csspt12@gmail.com";
-    $subject = "معلومات التسجيل الجديدة";
-    $message = "الاسم: $firstname\nاللقب: $lastname\nعدد الأولاد: $children";
+    $headers = "From: webmaster@example.com"; // Replace with a valid email address
 
-    // إرسال البريد الإلكتروني
-    mail($to, $subject, $message);
-
-    echo "تم التسجيل بنجاح. شكراً لك!";
-}
-else {
-    http_response_code(405);
-    echo "ERROR: Method Not Allowed";
+    if (mail($to, $subject, $message, $headers)) {
+        echo "Email sent successfully.";
+    } else {
+        echo "Failed to send email.";
+    }
 }
 ?>
