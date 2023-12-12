@@ -13,4 +13,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     echo "تم التسجيل بنجاح. شكراً لك!";
 }
+else {
+    http_response_code(405);
+    echo "ERROR: Method Not Allowed";
+}
 ?>
